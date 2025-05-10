@@ -3,6 +3,10 @@
 # Install dependencies untuk Flask app
 echo "Installing dependencies..."
 cd /home/ubuntu/login_rds
+echo "install flask"
+sudo apt update
+sudo apt install python3-pip
+pip3 install --upgrade pip
 pip3 install -r requirements.txt
 
 # Menghentikan proses Flask yang sudah berjalan sebelumnya
