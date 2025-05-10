@@ -25,7 +25,7 @@ class FlaskAppTestCase(unittest.TestCase):
         self.app.post('/login', data=dict(username='admin', password='admin123'))
         response = self.app.get('/dashboard')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'Welcome, admin 🚀', response.data)
+        self.assertIn('Welcome, admin 🚀', response.data)
 
 if __name__ == '__main__':
     unittest.main()
