@@ -21,11 +21,17 @@ class FlaskAppTestCase(unittest.TestCase):
 
     # Test rute dashboard (harus login dulu)
     def test_dashboard_page(self):
-        # Simulasi login
-        self.app.post('/login', data=dict(username='admin', password='admin123'))
+    # Simulasi login (pastikan session aktif)
+        response = self.app.post('/login', data=dict(username='admin', password='admin123'))
+    
+    # Setelah login, coba akses dashboard
         response = self.app.get('/dashboard')
+    
+    # Pastikan status code 200, artinya halaman berhasil diakses setelah login
         self.assertEqual(response.status_code, 200)
-        self.assertIn('Welcome, admin 🚀', response.data)
+    
+    # Cek apakah dashboard menampilkan teks yang mengindikasikan login berhasil
+        self.assertIn('Welcome, admin 🚀', response.data.decode())
 
 if __name__ == '__main__':
     unittest.main()
